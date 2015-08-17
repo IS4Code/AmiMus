@@ -102,7 +102,7 @@ namespace IllidanS4.Amiga.SonicArranger
 			for(int i = 0; i < 4; i++)
 			{
 				var track = song.AddTrack(null);
-				song.SetTempo(track, 2956/stbl.SongSpeed);
+				song.SetTempo(track, 3000/stbl.SongSpeed);
 				song.SetTimeSignature(track, 4, 4);
 			}
 			for(int i = 0; i < inst.Length; i++)
@@ -128,7 +128,7 @@ namespace IllidanS4.Amiga.SonicArranger
 			}
 			
 			int lastinstr = Int32.MinValue;
-			for(int i = stbl.StartPos; i < stbl.StopPos; i++)
+			for(int i = stbl.StartPos; i <= stbl.StopPos; i++)
 			{
 				for(int j = 0; j < 4; j++)
 				{
@@ -136,6 +136,13 @@ namespace IllidanS4.Amiga.SonicArranger
 					for(int k = 0; k < stbl.PatternLength; k++)
 					{
 						var note = notb[voice.NoteAddress+k];
+						if(note.Command == 15)
+						{
+							for(int l = 0; l < 4; l++)
+							{
+								song.SetTempo(l, 3000/note.CommandInfo);
+							}
+						}
 						int instr = note.Instrument-1;
 						if(instr >= 0)
 						{
