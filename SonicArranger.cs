@@ -101,7 +101,7 @@ namespace IllidanS4.Amiga.SonicArranger
 			for(int i = 0; i < 4; i++)
 			{
 				var track = song.AddTrack(null);
-				song.SetTempo(track, stbl.SongSpeed*90);
+				song.SetTempo(track, 2956/stbl.SongSpeed);
 				song.SetTimeSignature(track, 4, 4);
 			}
 			for(int i = 0; i < inst.Length; i++)
