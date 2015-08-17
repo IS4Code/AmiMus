@@ -1,11 +1,13 @@
 ﻿/* Date: 12.8.2015, Time: 2:16 */
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace IllidanS4.Amiga
 {
 	public static class AmigaTools
 	{
+		[DebuggerStepThrough]
 		public static int ReadInt32BE(this BinaryReader reader)
 		{
 			if(BitConverter.IsLittleEndian)
@@ -24,6 +26,7 @@ namespace IllidanS4.Amiga
 			}
 		}
 		
+		[DebuggerStepThrough]
 		public static short ReadInt16BE(this BinaryReader reader)
 		{
 			if(BitConverter.IsLittleEndian)
@@ -40,6 +43,7 @@ namespace IllidanS4.Amiga
 			}
 		}
 		
+		[DebuggerStepThrough]
 		public static ushort ReadUInt16BE(this BinaryReader reader)
 		{
 			return unchecked((ushort)ReadInt16BE(reader));

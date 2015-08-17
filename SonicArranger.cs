@@ -25,6 +25,7 @@ namespace IllidanS4.Amiga.SonicArranger
 			string soar = new string(reader.ReadChars(4));
 			if(soar != "SOAR")
 			{
+				stream.Position = 0;
 				long start = ReadTo(reader, pcstart);
 				int songptr = 0x28;
 				int ovtbptr = reader.ReadInt32BE();

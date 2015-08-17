@@ -30,7 +30,7 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <StartAction>Project</StartAction>
-    <StartArguments>sa.Extro_music Extro.mid</StartArguments>
+    <StartArguments>sa.level_1 level1.mid</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -39,6 +39,7 @@
     <Optimize>True</Optimize>
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <DefineConstants>TRACE</DefineConstants>
+    <StartAction>Project</StartAction>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
