@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Amiga.cs" />
+    <Compile Include="Hippel.cs" />
     <Compile Include="HippelCOSO.cs" />
     <Compile Include="MidiSong.cs" />
     <Compile Include="MidiTrack.cs" />

@@ -16,8 +16,51 @@ namespace IllidanS4.Amiga.AmiMus
 	{
 		public static void Main(string[] args)
 		{
-			//SA2MIDI("sa.Extro_music");
-			//SA2MIDI("sa.Amber20");
+			/*var hip = new JHPlayer();
+			using(var stream = new FileStream("hipc.Title", FileMode.Open))
+			{
+				hip.loader(stream);
+				var mid = new MIDISong();
+				for(int i = 0; i < 4; i++) mid.AddTrack();
+				
+			}*/
+			
+			var hip = HippelCosoFile.Open("hipc.City_Walk", null);
+			var song = new MIDISong();
+			for(int i = 0; i < 4; i++)
+			{
+				var track = song.AddTrack(null);
+				song.SetTempo(track, 3000/hip.Songs[0].Speed);
+				song.SetTimeSignature(track, 4, 4);
+			}
+			
+			/*for(int i = 0; i < hip.Voices.Length/4; i++)
+			{
+				for(int j = 0; j < 4; j++)
+				{
+					var voice = hip.Voices[i*4+j];
+					int vsize = 12;
+					for(int k = 0; k < vsize; k++)
+					{
+						int note = hip.Patterns[voice.PatternAddress*vsize+k].Note*2;
+						//if(note <= 5) note = 0;
+						song.AddNote(j, 0, note-1, 12);
+					}
+				}
+			}*/
+			
+			for(int i = 0; i < hip.Patterns.Length; i++)
+			{
+				int note = hip.Patterns[i].Note;
+				song.AddNote(0, 0, note*2-1, 12);
+			}
+			
+			using(var stream = new FileStream("hip.mid", FileMode.Create))
+			{
+				song.Save(stream);
+			}
+			
+			return;
 			
 			var cfg = ReadConfig();
 			
